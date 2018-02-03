@@ -12,6 +12,7 @@ logs
 build/
 dist/bundle.js
 dist/img/
+dist/sound/
 
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:

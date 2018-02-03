@@ -6,6 +6,8 @@ import './main.css';
 import Home from './components/Home.jsx';
 import SessionEnd from './components/SessionEnd.jsx';
 
+import endSound from './sound/din_don_don.mp3';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -64,6 +66,9 @@ class App extends React.Component {
   }
 
   endSession() {
+    let endSoundPlay = new Audio(endSound);
+
+    endSoundPlay.play();
     this.setState({view: 'SessionEnd', countdown: 0});
     this.renderView();
   }
