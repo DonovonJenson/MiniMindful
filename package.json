@@ -33,8 +33,7 @@
     "url": "https://github.com/aploftus/loftus-react-starter/issues"
   },
   "homepage": "https://github.com/aploftus/loftus-react-starter#readme",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
