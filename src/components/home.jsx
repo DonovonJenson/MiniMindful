@@ -18,10 +18,10 @@ class Home extends React.Component {
   }
 
   renderControls() {
-    const { running, setSessionLength, startCountdown } = this.props;
+    const { running, setSessionLength, startCountdown, endSession } = this.props;
 
     if (running) {
-      return <SessionControls setSessionLength={setSessionLength} />;
+      return <SessionControls setSessionLength={setSessionLength} endSession={endSession} />;
     } else {
       return (
         <div>

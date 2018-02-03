@@ -6,12 +6,13 @@ class SessionEnd extends React.Component {
   }
 
   renderSessionLength() {
-    const { sessionLength } = this.props;
+    const { sessionLength, countdown } = this.props;
+    const activeSessionLength = sessionLength - countdown;
 
-    if (sessionLength === 60) {
+    if (activeSessionLength === 60) {
       return '1 minute';
     } else {
-      return `${Math.floor(sessionLength / 60)} minutes`;
+      return `${Math.floor(activeSessionLength / 60)} minutes`;
     }
   }
 

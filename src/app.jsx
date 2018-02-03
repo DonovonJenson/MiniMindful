@@ -12,9 +12,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      countdown: 100,
+      countdown: 50,
       refocusCount: 0,
-      sessionLength: 100,
+      sessionLength: 50,
       view: 'Home',
       interval: null,
       running: false,
@@ -94,7 +94,7 @@ class App extends React.Component {
         startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} running={running} />;
     }
     if (view === 'SessionEnd') {
-      return <SessionEnd refocusCount={refocusCount} sessionLength={sessionLength} />;
+      return <SessionEnd refocusCount={refocusCount} countdown={countdown} sessionLength={sessionLength} />;
     }
     if (view === 'Instructions') {
       return <Instructions/>;

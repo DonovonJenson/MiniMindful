@@ -8,7 +8,7 @@ class SessionControls extends React.Component {
   }
 
   render() {
-    const { setSessionLength } = this.props;
+    const { setSessionLength, endSession } = this.props;
 
     return (
       <div>
@@ -17,7 +17,7 @@ class SessionControls extends React.Component {
           <source src={whiteNoise} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-        <button id="end-session" className="btn btn-light">End Session</button>
+        <button id="end-session" className="btn btn-light" onClick={e => endSession()}>End Session</button>
       </div>
     );
   }
