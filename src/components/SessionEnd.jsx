@@ -11,7 +11,7 @@ class SessionEnd extends React.Component {
     if (sessionLength === 60) {
       return '1 minute';
     } else {
-      return `${sessionLength / 60} minutes`;
+      return `${Math.floor(sessionLength / 60)} minutes`;
     }
   }
 
