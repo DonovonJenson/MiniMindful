@@ -1,5 +1,5 @@
-# loftus-react-starter
-starter setup for React projects
+# MiniMindful
+mindfulness for everyone
 
 Usage
 ---
