@@ -14,7 +14,8 @@ class App extends React.Component {
       countdown: 0,
       refocusCount: 0,
       sessionLength: 60,
-      view: 'Home'
+      view: 'Home',
+      interval: null,
     };
 
     this.startCountdown = this.startCountdown.bind(this);
@@ -24,7 +25,19 @@ class App extends React.Component {
   }
 
   startCountdown() {
-    console.log('starting countdown');
+
+    var countdownFunction = setInterval(() => {
+      this.setState(prevState => ({countdown: prevState.countdown - 1}));
+      if (this.state.countdown <= 0) {
+        clearInterval(this.state.interval);
+      }
+    }, 1000);
+
+    if (this.state.countdown === 0) {
+      this.setState({countdown: this.state.sessionLength});
+    }  
+    this.setState({interval: countdownFunction});
+
     // if !countdown, countdown = session length
     // else, countdown = countdown
     // set interval, every second, decrement countdown
