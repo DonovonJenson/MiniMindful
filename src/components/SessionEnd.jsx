@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Home extends React.Component {
+class SessionEnd extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -9,10 +9,12 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container col-8">
-        Here is the home component.
+        <p>Yay!</p>
+        <p>You completed a session of {this.props.sessionLength}.</p>
+        <p>You refocused {this.props.refocusCount} times.</p>
       </div>
     );
   }
 }
 
-export default Home;
+export default SessionEnd;

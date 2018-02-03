@@ -9,7 +9,9 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container col-8">
-        Here is the home component.
+        <span>{this.props.countdown}</span>
+        <button onClick={e => this.props.refocus()} >Refocus</button>
+        <button onClick={e => this.props.startCountdown()} >Start</button>
       </div>
     );
   }

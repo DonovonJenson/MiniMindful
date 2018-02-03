@@ -14,11 +14,17 @@ class App extends React.Component {
       countdown: 0,
       refocusCount: 0,
       sessionLength: 60,
-
+      view: 'Home'
     };
+
+    this.startCountdown = this.startCountdown.bind(this);
+    this.refocus = this.refocus.bind(this);
+    this.endSession = this.endSession.bind(this);
+    this.renderView = this.renderView.bind(this);
   }
 
   startCountdown() {
+    console.log('starting countdown');
     // if !countdown, countdown = session length
     // else, countdown = countdown
     // set interval, every second, decrement countdown
@@ -28,6 +34,7 @@ class App extends React.Component {
   }
 
   refocus() {
+    console.log('i refocused!');
     this.setState(prevState => ({ refocusCount: prevState.refocusCount + 1 }) );
   }
 
@@ -36,16 +43,25 @@ class App extends React.Component {
     // display user's results with the SessionEnd component
   }
 
+  renderView() {
+    const { view, countdown, refocusCount, sessionLength } = this.state;
+
+    if (view === 'Home') {
+      return <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength}
+        startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} />;
+    }
+    if (view === 'SessionEnd') {
+      return <SessionEnd refocusCount={refocusCount} sessionLength={sessionLength} />;
+    }
+  }
+
   render() {
-    const { countdown, refocusCount, sessionLength } = this.state;
 
     return (
       <div>
-        <Header />
         <div className="container row main">
-          <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength} />
+          {this.renderView()}
         </div>
-        <Footer />
       </div>
     );
   }
