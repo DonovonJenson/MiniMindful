@@ -59,5 +59,9 @@ body {
   font-size: 1em;
 }
 
+audio {
+  margin: 1em;
+}
+
 /* =========== SESSION END ========== */
 

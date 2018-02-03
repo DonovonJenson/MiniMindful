@@ -1,5 +1,7 @@
 import React from 'react';
 
+import whiteNoise from '../sound/white-noise-10-min.mp3';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,19 @@ class Home extends React.Component {
     if (sec < 10) { sec = '0' + sec; }
 
     return `${min}:${sec}`;
+  }
+
+  renderControls() {
+    if (this.props.running) {
+      return (
+        <audio autoplay="true" loop="true" controls="true">
+          <source src={whiteNoise} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      );
+    } else {
+      return <button id="start" className="btn btn-light" onClick={e => this.props.startCountdown()}>Start</button>;
+    }
   }
 
   render() {
@@ -34,7 +49,7 @@ class Home extends React.Component {
           <button className="btn btn-light" onClick={e => setSessionLength(900)}>15 min</button>
         </div>
         <div className="row justify-content-center">
-          <button id="start" className="btn btn-light" onClick={e => this.props.startCountdown()}>Start</button>
+          {this.renderControls()}
         </div>
       </div>
     );
