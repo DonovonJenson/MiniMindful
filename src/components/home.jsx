@@ -16,16 +16,25 @@ class Home extends React.Component {
   }
 
   render() {
+    const { setSessionLength } = this.props;
+
     return (
       <div className="container">
         <div className="row justify-content-center">
           <span id="countdown">{this.renderTime(this.props.countdown)}</span>
         </div>
         <div className="row justify-content-center">
-          <button id="refocus" className="btn btn-light" onClick={e => this.props.refocus()} >Refocus</button>
+          <button id="refocus" className="btn btn-light" onClick={e => this.props.refocus()}>Refocus</button>
         </div>
         <div className="row justify-content-center">
-          <button id="start" className="btn btn-light" onClick={e => this.props.startCountdown()} >Start</button>
+          <span>Select Time:</span>
+          <button className="btn btn-light" onClick={e => setSessionLength(60)}>1 min</button>
+          <button className="btn btn-light" onClick={e => setSessionLength(300)}>5 min</button>
+          <button className="btn btn-light" onClick={e => setSessionLength(600)}>10 min</button>
+          <button className="btn btn-light" onClick={e => setSessionLength(900)}>15 min</button>
+        </div>
+        <div className="row justify-content-center">
+          <button id="start" className="btn btn-light" onClick={e => this.props.startCountdown()}>Start</button>
         </div>
       </div>
     );

@@ -19,10 +19,22 @@ class App extends React.Component {
       running: false,
     };
 
+    this.setSessionLength = this.setSessionLength.bind(this);
     this.startCountdown = this.startCountdown.bind(this);
     this.refocus = this.refocus.bind(this);
     this.endSession = this.endSession.bind(this);
     this.renderView = this.renderView.bind(this);
+  }
+
+  setSessionLength(seconds) {
+    this.setState(prevState => {
+      return {
+        sessionLength: seconds,
+        countdown: seconds,
+        interval: null
+      };
+    });
+    clearInterval(this.state.interval);
   }
 
   startCountdown() {
@@ -61,6 +73,7 @@ class App extends React.Component {
 
     if (view === 'Home') {
       return <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength}
+        setSessionLength={this.setSessionLength}
         startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} />;
     }
     if (view === 'SessionEnd') {
