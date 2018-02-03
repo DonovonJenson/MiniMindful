@@ -19,6 +19,8 @@ class App extends React.Component {
       view: 'Home',
       interval: null,
       running: false,
+      maxFocus: 0,
+      focusTimestamps: [],
     };
 
     this.setSessionLength = this.setSessionLength.bind(this);
@@ -45,6 +47,10 @@ class App extends React.Component {
       this.setState({countdown: this.state.sessionLength});
     }
 
+    if (!this.state.focusTimestamp) {
+      this.setState({focusTimestamps: [this.state.sessionLength]});
+    }
+
     if (!this.state.running) {
 
       const countdownFunction = setInterval(() => {
@@ -62,7 +68,13 @@ class App extends React.Component {
   }
 
   refocus() {
+    //Need to refactor focus count to just print length of focus
     this.setState(prevState => ({ refocusCount: prevState.refocusCount + 1 }) );
+    const focusLength = this.state.focusTimestamps[this.state.focusTimestamps.length - 1] - this.state.countdown;
+    if (this.state.maxFocus < focusLength) {
+      this.setState({maxFocus: focusLength});
+    }
+    this.setState({focusTimestamps: this.state.focusTimestamps.concat([this.state.countdown])});
   }
 
   endSession() {
