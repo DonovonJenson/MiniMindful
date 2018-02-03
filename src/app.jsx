@@ -29,7 +29,7 @@ class App extends React.Component {
 
     if (this.state.countdown <= 0) {
       this.setState({countdown: this.state.sessionLength});
-    }  
+    }
 
     if (!this.state.running) {
 

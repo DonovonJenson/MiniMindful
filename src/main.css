@@ -2,6 +2,15 @@ body {
   color: #222;
   font-family: 'Lato', sans-serif;
   font-weight: 100;
+  font-size: 2em;
+}
+
+.btn {
+  margin: 1em;
+}
+
+.center {
+  text-align: center;
 }
 
 /* ========== MAIN ========== */
@@ -12,14 +21,10 @@ body {
 }
 
 /* =========== HOME ========== */
-
 #countdown {
   font-size: 10em;
 }
 
-.btn {
-  margin: 1em;
-}
 
 #refocus {
   font-size: 3em;
@@ -28,3 +33,6 @@ body {
 #start {
   font-size: 2em;
 }
+
+/* =========== SESSION END ========== */
+
