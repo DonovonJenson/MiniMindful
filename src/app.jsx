@@ -47,9 +47,9 @@ class App extends React.Component {
       this.setState({countdown: this.state.sessionLength});
     }
 
-    if (!this.state.focusTimestamp) {
+    if (this.state.countdown === this.state.sessionLength) {
       this.setState({focusTimestamps: [this.state.sessionLength]});
-    }
+    } 
 
     if (!this.state.running) {
 
