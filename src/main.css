@@ -4,48 +4,27 @@ body {
   font-weight: 100;
 }
 
-/* ========= HEADER ========== */
-.header {
-  top: 0;
-  width: 100%;
-  height: 100px;
-  background-color: white;
-}
-
-.tabs {
-  float: right;
-  right: 5%;
-}
-
-.tab {
-  margin: 1em;
-  color: #333;
-  padding: 1em 3em;
-}
-
-.tab:hover {
-  color: #52b947;
-  cursor: pointer;
-}
-
-/* ========== FOOTER ========== */
-.icon {
-  margin: 1em;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  background-color: white;
-}
-
 /* ========== MAIN ========== */
 .main {
-  padding-bottom: 80px;
+  padding-top: 100px;
+/*  position: absolute;
+  top: 25%;*/
 }
 
 /* =========== HOME ========== */
 
+#countdown {
+  font-size: 10em;
+}
 
+.btn {
+  margin: 1em;
+}
+
+#refocus {
+  font-size: 3em;
+}
+
+#start {
+  font-size: 2em;
+}

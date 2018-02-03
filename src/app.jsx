@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      countdown: 0,
+      countdown: 60,
       refocusCount: 0,
       sessionLength: 60,
       view: 'Home',
@@ -72,7 +72,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <div className="container row main">
+        <div className="container main">
           {this.renderView()}
         </div>
       </div>
