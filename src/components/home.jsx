@@ -1,6 +1,6 @@
 import React from 'react';
 
-import whiteNoise from '../sound/white-noise-10-min.mp3';
+import SessionControls from './SessionControls.jsx';
 
 class Home extends React.Component {
   constructor(props) {
@@ -18,36 +18,40 @@ class Home extends React.Component {
   }
 
   renderControls() {
-    if (this.props.running) {
-      return (
-        <audio autoplay="true" loop="true" controls="true">
-          <source src={whiteNoise} type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
-      );
+    const { running, setSessionLength, startCountdown } = this.props;
+
+    if (running) {
+      return <SessionControls setSessionLength={setSessionLength} />;
     } else {
-      return <button id="start" className="btn btn-light" onClick={e => this.props.startCountdown()}>Start</button>;
+      return (
+        <div>
+          <div className="row justify-content-center">
+            <span>Select Time:</span>
+            <button className="btn btn-light" onClick={e => setSessionLength(60)}>1 min</button>
+            <button className="btn btn-light" onClick={e => setSessionLength(300)}>5 min</button>
+            <button className="btn btn-light" onClick={e => setSessionLength(600)}>10 min</button>
+            <button className="btn btn-light" onClick={e => setSessionLength(900)}>15 min</button>
+          </div>
+          <div className="row justify-content-center">
+            <button id="start" className="btn btn-light" onClick={e => startCountdown()}>Start</button>
+          </div>
+        </div>
+      );
     }
   }
 
   render() {
-    const { setSessionLength } = this.props;
+    const { countdown, refocus } = this.props;
 
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <span id="countdown">{this.renderTime(this.props.countdown)}</span>
+          <span id="countdown">{this.renderTime(countdown)}</span>
         </div>
         <div className="row justify-content-center">
-          <button id="refocus" className="btn btn-light" onClick={e => this.props.refocus()}>Refocus</button>
+          <button id="refocus" className="btn btn-light" onClick={e => refocus()}>Refocus</button>
         </div>
-        <div className="row justify-content-center">
-          <span>Select Time:</span>
-          <button className="btn btn-light" onClick={e => setSessionLength(60)}>1 min</button>
-          <button className="btn btn-light" onClick={e => setSessionLength(300)}>5 min</button>
-          <button className="btn btn-light" onClick={e => setSessionLength(600)}>10 min</button>
-          <button className="btn btn-light" onClick={e => setSessionLength(900)}>15 min</button>
-        </div>
+
         <div className="row justify-content-center">
           {this.renderControls()}
         </div>

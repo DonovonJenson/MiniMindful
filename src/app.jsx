@@ -12,9 +12,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      countdown: 10,
+      countdown: 100,
       refocusCount: 0,
-      sessionLength: 10,
+      sessionLength: 100,
       view: 'Home',
       interval: null,
       running: false,
@@ -48,7 +48,7 @@ class App extends React.Component {
 
     if (this.state.countdown === this.state.sessionLength) {
       this.setState({focusTimestamps: [this.state.sessionLength]});
-    } 
+    }
 
     if (!this.state.running) {
       const countdownFunction = setInterval(() => {
