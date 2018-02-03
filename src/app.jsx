@@ -78,10 +78,10 @@ class App extends React.Component {
     let endSoundPlay = new Audio(endSound);
 
     endSoundPlay.play();
-    this.setState({view: 'SessionEnd', countdown: 0});
+    this.setState({view: 'SessionEnd'});
   }
 
-  changeTab(view) { 
+  changeTab(view) {
     this.setState({view: view});
   }
 
