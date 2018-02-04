@@ -22,26 +22,27 @@ body {
  .header {
    top: 0;
    width: 100%;
-   height: 100px;
+   height: 50px;
    background-color: white;
+   font-size: 0.5em;
  }
- 
+
  .tabs {
    float: right;
    right: 5%;
  }
- 
+
  .tab {
    margin: 1em;
    color: #333;
    padding: 1em 3em;
  }
- 
+
  .tab:hover {
    color: #52b947;
    cursor: pointer;
  }
- 
+
 
 /* =========== HOME ========== */
 #countdown {
