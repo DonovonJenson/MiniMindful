@@ -35,6 +35,7 @@
   "homepage": "https://github.com/aploftus/loftus-react-starter#readme",
   "devDependencies": {},
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",

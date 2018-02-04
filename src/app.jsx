@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import './main.css';
 import Home from './components/Home.jsx';
 import Header from './components/header.jsx';
+import Login from './components/login.jsx';
 import Instructions from './components/instructions.jsx';
 import SessionEnd from './components/SessionEnd.jsx';
 import endSound from './sound/din_don_don.mp3';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +32,8 @@ class App extends React.Component {
     this.endSession = this.endSession.bind(this);
     this.renderView = this.renderView.bind(this);
     this.changeTab = this.changeTab.bind(this);
+    this.sendLogin = this.sendLogin.bind(this);
+
   }
 
   setSessionLength(seconds) {
@@ -84,13 +88,33 @@ class App extends React.Component {
 
   endSession() {
     let endSoundPlay = new Audio(endSound);
-
     endSoundPlay.play();
     this.setState({view: 'SessionEnd'});
+    axios.post('/sessionEnd', {
+      //Placeholder ID until we add users correctly
+      user_id: 0,
+      focusTimeStamp: this.state.focusTimestamps,
+      duration: this.state.sessionLength,
+      maxFocus: this.state.maxFocus,
+    }).then(function (response) {
+      //Placeholder if we want a response when something comes back
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 
   changeTab(view) {
     this.setState({view: view});
+  }
+
+  sendLogin(loginObject) {
+    console.log(loginObject)
+    axios.post('/login', loginObject)
+      .then((response) =>{
+
+      }).catch( (error) => {
+        console.log(error);
+      });
   }
 
   renderView() {
@@ -107,6 +131,10 @@ class App extends React.Component {
     if (view === 'Instructions') {
       return <Instructions/>;
     }
+    if (view === 'Login') {
+      return <Login sendLogin = {this.sendLogin}/>;
+    }
+
   }
 
   render() {
