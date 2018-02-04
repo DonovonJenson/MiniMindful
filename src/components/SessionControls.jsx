@@ -7,7 +7,7 @@ class SessionControls extends React.Component {
     super(props);
   }
 
-  togglePauseRestart() {
+  togglePauseResume() {
     const { paused, startCountdown, pauseSession } = this.props;
 
     if (paused) {
@@ -21,7 +21,7 @@ class SessionControls extends React.Component {
 
     return (
       <div>
-        {this.togglePauseRestart()}
+        {this.togglePauseResume()}
         <audio autoPlay="true" loop="true" controls="true">
           <source src={whiteNoise} type="audio/mpeg" />
           Your browser does not support the audio element.
