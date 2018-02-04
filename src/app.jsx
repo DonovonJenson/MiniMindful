@@ -121,7 +121,6 @@ class App extends React.Component {
   }
 
   sendSignup(signUpObject) {
-    console.log(signUpObject);
     axios.post('/signup', signUpObject)
       .then((response) =>{
         this.setState({user_id: response.data.user_id});
