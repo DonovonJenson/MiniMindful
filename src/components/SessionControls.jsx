@@ -22,7 +22,7 @@ class SessionControls extends React.Component {
     return (
       <div>
         {this.togglePauseRestart()}
-        <audio loop="true" controls="true">
+        <audio autoPlay="true" loop="true" controls="true">
           <source src={whiteNoise} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
