@@ -92,9 +92,9 @@ class App extends React.Component {
     let endSoundPlay = new Audio(endSound);
     endSoundPlay.play();
     this.setState({view: 'SessionEnd'});
-    axios.post('/sessionEnd', {
+    axios.post('/session', {
       //Placeholder ID until we add users correctly
-      user_id: 0,
+      user_id: this.state.user_id || null,
       focusTimeStamp: this.state.focusTimestamps,
       duration: this.state.sessionLength,
       maxFocus: this.state.maxFocus,
@@ -113,7 +113,7 @@ class App extends React.Component {
     axios.post('/login', loginObject)
       .then((response) =>{
         if (response.status === 200) {
-          this.setState({user_id: response.data.user_ud});
+          this.setState({user_id: response.data.user_id});
         }
       }).catch( (error) => {
         console.log(error);
@@ -124,7 +124,7 @@ class App extends React.Component {
     console.log(signUpObject);
     axios.post('/signup', signUpObject)
       .then((response) =>{
-        //Placeholder to change state on successful signup
+        this.setState({user_id: response.data.user_id});
       }).catch( (error) => {
         console.log(error);
       });
