@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mindful');
 mongoose.Promise = require('bluebird');
 
-
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -16,7 +15,7 @@ const userSchema = mongoose.Schema({
 });
 
 const sessionSchema = mongoose.Schema({
-  user_id: Number,
+  user_id: String,
   createdAt: Date,
   duration: Number,
   focusTimestamps: Array,

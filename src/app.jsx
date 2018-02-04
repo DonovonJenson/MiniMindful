@@ -83,7 +83,6 @@ class App extends React.Component {
   }
 
   pauseSession() {
-    console.log('pausing');
     this.setState({ paused: true });
     clearInterval(this.state.interval);
   }
@@ -95,8 +94,8 @@ class App extends React.Component {
     axios.post('/session', {
       //Placeholder ID until we add users correctly
       user_id: this.state.user_id || null,
-      focusTimeStamp: this.state.focusTimestamps,
-      duration: this.state.sessionLength,
+      focusTimestamps: this.state.focusTimestamps,
+      duration: this.state.sessionLength - this.state.countdown,
       maxFocus: this.state.maxFocus,
     }).then(function (response) {
       //Placeholder if we want a response when something comes back
