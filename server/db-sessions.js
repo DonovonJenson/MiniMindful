@@ -1,7 +1,7 @@
 const Session = require('./db.js').Session;
 
 module.exports = {
-  createSession: (newSession) => {
+  createSession: (newSession, cb) => {
     const { user_id, duration, focusTimestamps, maxFocus } = newSession;
 
     const session = new Session({
