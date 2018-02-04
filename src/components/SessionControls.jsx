@@ -17,10 +17,13 @@ class SessionControls extends React.Component {
   }
 
   render() {
-    const { endSession } = this.props;
+    const { endSession, refocus } = this.props;
 
     return (
       <div>
+        <div className="row justify-content-center">
+          <button id="refocus" className="btn btn-light" onClick={e => refocus()}>Refocus</button>
+        </div>
         {this.togglePauseResume()}
         <audio autoPlay="true" loop="true" controls="true">
           <source src={whiteNoise} type="audio/mpeg" />
