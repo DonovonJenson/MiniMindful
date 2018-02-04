@@ -2,15 +2,15 @@
   "name": "loftus-react-starter",
   "version": "1.0.0",
   "description": "starter setup for React projects",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "compile": "webpack",
     "compile-dev": "webpack -d --watch",
     "database": "mongod",
-    "lint": "eslint src && eslint index.js",
+    "lint": "eslint src && eslint server",
     "postinstall": "NODE_ENV=production webpack --config ./webpack.config.js --progress --colors",
-    "start-dev": "npm run compile && nodemon index.js",
-    "start": "node index.js",
+    "start-dev": "npm run compile && nodemon server/index.js",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -47,6 +47,7 @@
     "eslint": "^4.15.0",
     "express": "^4.16.2",
     "file-loader": "^1.1.6",
+    "mongoose": "^5.0.3",
     "nodemon": "^1.14.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
