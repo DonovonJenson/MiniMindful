@@ -2,11 +2,14 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 
+const dbUsers = require('./db-users.js');
+const dbSessions = require('./db-sessions.js');
+
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/../dist'));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -16,8 +19,11 @@ app.get('/', (req, res) => {
 app.post('/signup', (req, res) => {
   const { username, password } = req.body;
 
-  // create new user in users table
-  // res.send(201, { user_id: 0 });
+  dbUsers.createUser(username, password, (user) => {
+    !user && res.send(503);
+    console.log(user);
+    user && res.send(201, {user_id: user.id});
+  });
 });
 
 app.post('/login', (req, res) => {
@@ -31,7 +37,7 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/session', (req, res) => {
-  const { user_id, duration, focusTimestamps, maxFocus } = req.body;
+  // const { user_id, duration, focusTimestamps, maxFocus } = req.body;
 
   // create new session in sessions table
   // res.send(201, 'session logged');

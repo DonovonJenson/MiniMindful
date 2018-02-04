@@ -1,28 +1,23 @@
-const db = require('./db.js');
+const User = require('./db.js').User;
 
-const userSchema = mongoose.Schema({
-  username: String,
-  password: String
-});
+module.exports = {
+  createUser: (username, password, cb) => {
+    const user = new User({
+      username: username,
+      password: password
+    });
 
-const User = mongoose.model('User', userSchema);
+    user.save((err, user) => {
+      err && console.error(err);
+      user && console.log(username, ' was saved');
+      cb(user);
+    });
+  },
 
-const createUser = (username, password, cb) => {
-  const user = new User({
-    username: username,
-    password: password
-  });
-
-  user.save((err, user) => {
-    err && console.error(err);
-    user && console.log(username, ' was saved');
-    cb(user);
-  });
-};
-
-const verifyUser = (username, password, cb) => {
-  User.findOne({ username: username, password: password }, (err, user) => {
-    err && cb(null);
-    user && cb(user);
-  });
+  verifyUser: (username, password, cb) => {
+    User.findOne({ username: username, password: password }, (err, user) => {
+      err && cb(null);
+      user && cb(user);
+    });
+  }
 };
