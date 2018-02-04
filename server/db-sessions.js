@@ -4,6 +4,8 @@ module.exports = {
   createSession: (newSession, cb) => {
     const { user_id, duration, focusTimestamps, maxFocus } = newSession;
 
+    console.log('FOCUSING', focusTimestamps);
+
     const session = new Session({
       user_id: user_id,
       duration: duration,
@@ -14,7 +16,6 @@ module.exports = {
 
     session.save((err, user) => {
       err && console.error(err);
-      session && console.log(session.duration);
       cb(session);
     });
   }

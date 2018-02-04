@@ -20,8 +20,8 @@ app.post('/signup', (req, res) => {
   const { username, password } = req.body;
 
   dbUsers.createUser(username, password, (user) => {
-    !user && res.send(503, 'signup failed');
-    user && res.send(201, {user_id: user.id});
+    !user && res.status(503).send('signup failed');
+    user && res.status(201).send({user_id: user.id});
   });
 });
 
@@ -29,15 +29,15 @@ app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   dbUsers.verifyUser(username, password, (user) => {
-    !user && res.send(401, 'login failed');
-    user && res.send(200, {user_id: user.id});
+    !user && res.status(401).send('login failed');
+    user && res.status(200).send({user_id: user.id});
   });
 });
 
 app.post('/session', (req, res) => {
   dbSessions.createSession(req.body, (session) => {
-    !session && res.send(503, 'session logging failed');
-    session && res.send(201, 'session logged');
+    !session && res.status(503).send('session logging failed');
+    session && res.status(503).send('session logged');
   });
 });
 
