@@ -7,12 +7,21 @@ class SessionControls extends React.Component {
     super(props);
   }
 
+  togglePauseRestart() {
+    const { paused, startCountdown, pauseSession } = this.props;
+
+    if (paused) {
+      return <button id="restart" className="btn btn-light" onClick={e => startCountdown()}>Restart Session</button>;
+    }
+    return <button id="pause" className="btn btn-light" onClick={e => pauseSession()}>Pause Session</button>;
+  }
+
   render() {
-    const { setSessionLength, endSession } = this.props;
+    const { endSession } = this.props;
 
     return (
       <div>
-        <button id="pause" className="btn btn-light">Pause Session</button>
+        {this.togglePauseRestart()}
         <audio loop="true" controls="true">
           <source src={whiteNoise} type="audio/mpeg" />
           Your browser does not support the audio element.

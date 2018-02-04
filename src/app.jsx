@@ -18,6 +18,7 @@ class App extends React.Component {
       view: 'Home',
       interval: null,
       running: false,
+      paused: false,
       maxFocus: 0,
       focusTimestamps: [],
     };
@@ -25,6 +26,7 @@ class App extends React.Component {
     this.setSessionLength = this.setSessionLength.bind(this);
     this.startCountdown = this.startCountdown.bind(this);
     this.refocus = this.refocus.bind(this);
+    this.pauseSession = this.pauseSession.bind(this);
     this.endSession = this.endSession.bind(this);
     this.renderView = this.renderView.bind(this);
     this.changeTab = this.changeTab.bind(this);
@@ -50,7 +52,7 @@ class App extends React.Component {
       this.setState({focusTimestamps: [this.state.sessionLength]});
     }
 
-    if (!this.state.running) {
+    if (!this.state.running || this.state.paused) {
       const countdownFunction = setInterval(() => {
         this.setState(prevState => ({countdown: prevState.countdown - 1}));
         if (this.state.countdown <= 0) {
@@ -60,7 +62,7 @@ class App extends React.Component {
         }
       }, 1000);
 
-      this.setState({interval: countdownFunction, running: true});
+      this.setState({interval: countdownFunction, running: true, paused: false});
     }
   }
 
@@ -72,6 +74,12 @@ class App extends React.Component {
       this.setState({maxFocus: focusLength});
     }
     this.setState({focusTimestamps: this.state.focusTimestamps.concat([this.state.countdown])});
+  }
+
+  pauseSession() {
+    console.log('pausing');
+    this.setState({ paused: true });
+    clearInterval(this.state.interval);
   }
 
   endSession() {
@@ -86,12 +94,12 @@ class App extends React.Component {
   }
 
   renderView() {
-    const { view, countdown, refocusCount, sessionLength, running } = this.state;
+    const { view, countdown, refocusCount, sessionLength, running, paused } = this.state;
 
     if (view === 'Home') {
-      return <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength}
-        setSessionLength={this.setSessionLength}
-        startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} running={running} />;
+      return <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength} running={running}
+        paused={paused} setSessionLength={this.setSessionLength} pauseSession={this.pauseSession}
+        startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} />;
     }
     if (view === 'SessionEnd') {
       return <SessionEnd refocusCount={refocusCount} countdown={countdown} sessionLength={sessionLength} />;
