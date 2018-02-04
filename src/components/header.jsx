@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import Tab from './tab.jsx';
 
-// import logo from '../img/logo-white.png';
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -13,8 +11,9 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <span className="tabs row justify-content-end">
-          <Tab title={'HOME'} />
+        <span className="tabs row justify-content-center">
+          <Tab title={'Instructions'} changeTab={this.props.changeTab} />
+          <Tab title={'Home'} changeTab={this.props.changeTab}/>
         </span>
       </div>
     );

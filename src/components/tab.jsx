@@ -11,6 +11,7 @@ class Tab extends React.Component {
       <span
         name={this.props.title}
         className="tab"
+        onClick={e => this.props.changeTab(this.props.title)}
       >
         {this.props.title}
       </span>

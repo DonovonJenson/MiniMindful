@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import './main.css';
-
 import Home from './components/Home.jsx';
+import Header from './components/header.jsx';
+import Instructions from './components/instructions.jsx';
 import SessionEnd from './components/SessionEnd.jsx';
-
 import endSound from './sound/din_don_don.mp3';
 
 class App extends React.Component {
@@ -28,6 +27,7 @@ class App extends React.Component {
     this.refocus = this.refocus.bind(this);
     this.endSession = this.endSession.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.changeTab = this.changeTab.bind(this);
   }
 
   setSessionLength(seconds) {
@@ -82,7 +82,10 @@ class App extends React.Component {
 
     endSoundPlay.play();
     this.setState({view: 'SessionEnd', countdown: 0});
-    this.renderView();
+  }
+
+  changeTab(view) { 
+    this.setState({view: view});
   }
 
   renderView() {
@@ -96,12 +99,16 @@ class App extends React.Component {
     if (view === 'SessionEnd') {
       return <SessionEnd refocusCount={refocusCount} sessionLength={sessionLength} />;
     }
+    if (view === 'Instructions') {
+      return <Instructions/>;
+    }
   }
 
   render() {
 
     return (
       <div>
+        <Header changeTab={this.changeTab}/>
         <div className="container main">
           {this.renderView()}
         </div>
