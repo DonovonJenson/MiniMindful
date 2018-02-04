@@ -20,8 +20,7 @@ app.post('/signup', (req, res) => {
   const { username, password } = req.body;
 
   dbUsers.createUser(username, password, (user) => {
-    !user && res.send(503);
-    console.log(user);
+    !user && res.send(503, 'signup failed');
     user && res.send(201, {user_id: user.id});
   });
 });
@@ -29,18 +28,17 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  // lookup in users table of db
-  // if username and password match record in db,
-  //   res.send(200, { user_id: 0 });
-  // else
-  //   res.send(401, 'login failed')
+  dbUsers.verifyUser(username, password, (user) => {
+    !user && res.send(401, 'login failed');
+    user && res.send(200, {user_id: user.id});
+  });
 });
 
 app.post('/session', (req, res) => {
-  // const { user_id, duration, focusTimestamps, maxFocus } = req.body;
-
-  // create new session in sessions table
-  // res.send(201, 'session logged');
+  dbSessions.createSession(req.body, (session) => {
+    !session && res.send(503, 'session logging failed');
+    session && res.send(201, 'session logged');
+  });
 });
 
 app.listen(PORT, function() {
