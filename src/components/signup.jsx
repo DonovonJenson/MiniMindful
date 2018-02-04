@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h1> Log In Here </h1>
+        <h1> Sign Up Here! </h1>
         <div>
           Username:
           <input type="text" onChange={(e) => this.setState({username: e.target.value})}/>
@@ -22,11 +22,11 @@ class Login extends React.Component {
           <input type="text" onChange={(e) => this.setState({password: e.target.value})}/>
         </div>
         <div>
-          <button onClick={() => this.props.sendLogin({username: this.state.username, password: this.state.password})}>Submit</button>
+          <button onClick={() => this.props.sendSignup({username: this.state.username, password: this.state.password})}>Submit</button>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+export default Signup;

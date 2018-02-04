@@ -20,6 +20,9 @@ app.post('/sessionEnd', (req, res) =>{
 
 app.post('/login', (req, res) => {
   const loginData = req.body;
+  if (true) {
+    res.send({user_id: 4});
+  }
   //Needs to check for existence of username/password combo
   //If correct, return logged in status
   //If incorrect redirect to login page

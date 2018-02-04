@@ -4,6 +4,7 @@ import './main.css';
 import Home from './components/Home.jsx';
 import Header from './components/header.jsx';
 import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
 import Instructions from './components/instructions.jsx';
 import SessionEnd from './components/SessionEnd.jsx';
 import endSound from './sound/din_don_don.mp3';
@@ -23,6 +24,7 @@ class App extends React.Component {
       paused: false,
       maxFocus: 0,
       focusTimestamps: [],
+      user_id: null,
     };
 
     this.setSessionLength = this.setSessionLength.bind(this);
@@ -108,10 +110,21 @@ class App extends React.Component {
   }
 
   sendLogin(loginObject) {
-    console.log(loginObject)
     axios.post('/login', loginObject)
       .then((response) =>{
+        if (response.status === 200) {
+          this.setState({user_id: response.data.user_ud});
+        }
+      }).catch( (error) => {
+        console.log(error);
+      });
+  }
 
+  sendSignup(signUpObject) {
+    console.log(signUpObject);
+    axios.post('/signup', signUpObject)
+      .then((response) =>{
+        //Placeholder to change state on successful signup
       }).catch( (error) => {
         console.log(error);
       });
@@ -134,6 +147,11 @@ class App extends React.Component {
     if (view === 'Login') {
       return <Login sendLogin = {this.sendLogin}/>;
     }
+
+    if (view === 'Signup') {
+      return <Signup sendSignup= {this.sendSignup}/>;
+    }
+
 
   }
 

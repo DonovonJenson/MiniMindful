@@ -14,6 +14,7 @@ class Header extends React.Component {
         <span className="tabs row justify-content-center">
           <Tab title={'Instructions'} changeTab={this.props.changeTab} />
           <Tab title={'Login'} changeTab={this.props.changeTab}/>
+          <Tab title={'Signup'} changeTab={this.props.changeTab}/>
           <Tab title={'Home'} changeTab={this.props.changeTab}/>
         </span>
       </div>
