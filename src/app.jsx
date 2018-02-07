@@ -15,9 +15,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      countdown: 50,
-      refocusCount: 0,
-      sessionLength: 50,
+      countdown: 60,
+      sessionLength: 60,
       view: 'Login',
       interval: null,
       running: false,
@@ -73,8 +72,6 @@ class App extends React.Component {
   }
 
   refocus() {
-    //Need to refactor focus count to just print length of focus
-    this.setState(prevState => ({ refocusCount: prevState.refocusCount + 1 }) );
     const focusLength = this.state.focusTimestamps[this.state.focusTimestamps.length - 1] - this.state.countdown;
     if (this.state.maxFocus < focusLength) {
       this.setState({maxFocus: focusLength});
@@ -130,15 +127,15 @@ class App extends React.Component {
   }
 
   renderView() {
-    const { view, countdown, refocusCount, sessionLength, running, paused } = this.state;
+    const { view, countdown, focusTimestamps, sessionLength, running, paused } = this.state;
 
     if (view === 'New Session') {
-      return <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength} running={running}
+      return <Home countdown={countdown} sessionLength={sessionLength} running={running}
         paused={paused} setSessionLength={this.setSessionLength} pauseSession={this.pauseSession}
         startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} />;
     }
     if (view === 'SessionEnd') {
-      return <SessionEnd changeTab={this.changeTab} refocusCount={refocusCount} countdown={countdown} sessionLength={sessionLength} />;
+      return <SessionEnd changeTab={this.changeTab} focusTimestamps={focusTimestamps} countdown={countdown} sessionLength={sessionLength} />;
     }
     if (view === 'Instructions') {
       return <Instructions/>;
