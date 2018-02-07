@@ -1,7 +1,7 @@
 {
-  "name": "loftus-react-starter",
+  "name": "mini-mindful",
   "version": "1.0.0",
-  "description": "starter setup for React projects",
+  "description": "mindfulness meditation tracker",
   "main": "server/index.js",
   "scripts": {
     "compile": "webpack",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aploftus/loftus-react-starter.git"
+    "url": "git+https://github.com/DonovonJenson/MiniMindful.git"
   },
   "keywords": [
     "html",
@@ -31,9 +31,9 @@
   "author": "Amy Loftus",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aploftus/loftus-react-starter/issues"
+    "url": "https://github.com/DonovonJenson/MiniMindful/issues"
   },
-  "homepage": "https://github.com/aploftus/loftus-react-starter#readme",
+  "homepage": "https://github.com/DonovonJenson/MiniMindful#readme",
   "devDependencies": {},
   "dependencies": {
     "axios": "^0.17.1",
