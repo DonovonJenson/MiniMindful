@@ -12,17 +12,15 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container center">
         <h1> Log In Here </h1>
         <div>
-          Username:
-          <input type="text" onChange={(e) => this.setState({username: e.target.value})}/>
+          <input type="text" placeholder="username" onChange={(e) => this.setState({username: e.target.value})}/>
           <br/>
-          Password: 
-          <input type="text" onChange={(e) => this.setState({password: e.target.value})}/>
+          <input type="password" placeholder="password" onChange={(e) => this.setState({password: e.target.value})}/>
         </div>
         <div>
-          <button onClick={() => this.props.sendLogin({username: this.state.username, password: this.state.password})}>Submit</button>
+          <button className="btn btn-light" onClick={() => this.props.sendLogin({username: this.state.username, password: this.state.password})}>Submit</button>
         </div>
       </div>
     );
