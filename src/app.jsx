@@ -90,7 +90,8 @@ class App extends React.Component {
   endSession() {
     let endSoundPlay = new Audio(endSound);
     endSoundPlay.play();
-    this.setState({view: 'SessionEnd'});
+    clearInterval(this.state.interval);
+    this.setState({view: 'SessionEnd', running: false});
     axios.post('/session', {
       //Placeholder ID until we add users correctly
       user_id: this.state.user_id || null,
@@ -137,7 +138,7 @@ class App extends React.Component {
         startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} />;
     }
     if (view === 'SessionEnd') {
-      return <SessionEnd refocusCount={refocusCount} countdown={countdown} sessionLength={sessionLength} />;
+      return <SessionEnd changeTab={this.changeTab} refocusCount={refocusCount} countdown={countdown} sessionLength={sessionLength} />;
     }
     if (view === 'Instructions') {
       return <Instructions/>;
