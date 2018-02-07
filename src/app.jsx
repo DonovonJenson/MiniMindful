@@ -18,7 +18,7 @@ class App extends React.Component {
       countdown: 50,
       refocusCount: 0,
       sessionLength: 50,
-      view: 'New Session',
+      view: 'Login',
       interval: null,
       running: false,
       paused: false,
@@ -113,7 +113,7 @@ class App extends React.Component {
     axios.post('/login', loginObject)
       .then((response) =>{
         if (response.status === 200) {
-          this.setState({user_id: response.data.user_id});
+          this.setState({user_id: response.data.user_id, view: 'New Session'});
         }
       }).catch( (error) => {
         console.log(error);
