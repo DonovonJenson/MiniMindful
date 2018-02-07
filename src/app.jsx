@@ -18,7 +18,7 @@ class App extends React.Component {
       countdown: 50,
       refocusCount: 0,
       sessionLength: 50,
-      view: 'Home',
+      view: 'New Session',
       interval: null,
       running: false,
       paused: false,
@@ -132,7 +132,7 @@ class App extends React.Component {
   renderView() {
     const { view, countdown, refocusCount, sessionLength, running, paused } = this.state;
 
-    if (view === 'Home') {
+    if (view === 'New Session') {
       return <Home countdown={countdown} refocusCount={refocusCount} sessionLength={sessionLength} running={running}
         paused={paused} setSessionLength={this.setSessionLength} pauseSession={this.pauseSession}
         startCountdown={this.startCountdown} refocus={this.refocus} endSession={this.endSession} />;

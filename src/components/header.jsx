@@ -15,7 +15,7 @@ class Header extends React.Component {
           <Tab title={'Instructions'} changeTab={this.props.changeTab} />
           <Tab title={'Login'} changeTab={this.props.changeTab}/>
           <Tab title={'Signup'} changeTab={this.props.changeTab}/>
-          <Tab title={'Home'} changeTab={this.props.changeTab}/>
+          <Tab title={'New Session'} changeTab={this.props.changeTab}/>
         </span>
       </div>
     );
