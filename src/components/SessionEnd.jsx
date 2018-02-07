@@ -17,12 +17,12 @@ class SessionEnd extends React.Component {
   }
 
   renderRefocusCount() {
-    const { refocusCount } = this.props;
+    const { focusTimestamps } = this.props;
 
-    if (refocusCount === 1) {
+    if (focusTimestamps.length - 1 === 1) {
       return '1 time';
     } else {
-      return `${refocusCount} times`;
+      return `${focusTimestamps.length - 1} times`;
     }
   }
 
