@@ -32,7 +32,7 @@ class SessionEnd extends React.Component {
         <p>Yay!</p>
         <p>You completed a session of {this.renderSessionLength()}.</p>
         <p>You refocused {this.renderRefocusCount()}.</p>
-        <button className="btn btn-light" onClick={e => this.props.changeTab('Home')}>Back to Home</button>
+        <button className="btn btn-light" onClick={e => this.props.changeTab('New Session')}>New Session</button>
       </div>
     );
   }
