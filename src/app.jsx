@@ -103,6 +103,7 @@ class App extends React.Component {
   }
 
   changeTab(view) {
+    this.setState({countdown: this.state.sessionLength});
     this.setState({view: view});
   }
 
@@ -128,7 +129,6 @@ class App extends React.Component {
 
   renderView() {
     const { view, countdown, focusTimestamps, sessionLength, running, paused } = this.state;
-
     if (view === 'New Session') {
       return <Home countdown={countdown} sessionLength={sessionLength} running={running}
         paused={paused} setSessionLength={this.setSessionLength} pauseSession={this.pauseSession}
