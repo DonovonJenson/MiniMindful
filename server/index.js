@@ -37,7 +37,7 @@ app.post('/login', (req, res) => {
 app.post('/session', (req, res) => {
   dbSessions.createSession(req.body, (session) => {
     !session && res.status(503).send('session logging failed');
-    session && res.status(503).send('session logged');
+    session && res.status(201).send('session logged');
   });
 });
 
