@@ -34,7 +34,7 @@ class App extends React.Component {
     this.renderView = this.renderView.bind(this);
     this.changeTab = this.changeTab.bind(this);
     this.sendLogin = this.sendLogin.bind(this);
-
+    this.sendSignup = this.sendSignup.bind(this);
   }
 
   setSessionLength(seconds) {
@@ -111,12 +111,8 @@ class App extends React.Component {
     this.setState({user_id: data, view: 'New Session'});
   }
 
-  sendSignup(signUpObject) {
-    axios.post('/signup', signUpObject)
-      .then((response) =>{
-        this.setState({user_id: response.data.user_id});
-      }).catch( (error) => {
-      });
+  sendSignup(user) {
+    this.setState({user_id: user, view: 'New Session'});
   }
 
   renderView() {

@@ -15,7 +15,8 @@ const userSchema = mongoose.Schema({
 });
 
 const sessionSchema = mongoose.Schema({
-  user_id: String,
+  //Needs to be changed to unique keys
+  user_id: String, 
   createdAt: Date,
   duration: Number,
   focusTimestamps: Array,
