@@ -114,7 +114,6 @@ class App extends React.Component {
           this.setState({user_id: response.data.user_id, view: 'New Session'});
         }
       }).catch( (error) => {
-        console.log(error);
       });
   }
 
@@ -123,12 +122,11 @@ class App extends React.Component {
       .then((response) =>{
         this.setState({user_id: response.data.user_id});
       }).catch( (error) => {
-        console.log(error);
       });
   }
 
   renderView() {
-    const { view, countdown, focusTimestamps, sessionLength, running, paused } = this.state;
+    const { view, countdown, focusTimestamps, sessionLength, running, paused} = this.state;
     if (view === 'New Session') {
       return <Home countdown={countdown} sessionLength={sessionLength} running={running}
         paused={paused} setSessionLength={this.setSessionLength} pauseSession={this.pauseSession}

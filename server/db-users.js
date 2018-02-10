@@ -16,7 +16,7 @@ module.exports = {
 
   verifyUser: (username, password, cb) => {
     User.findOne({ username: username, password: password }, (err, user) => {
-      err && cb(null);
+      (user === null || err) && cb(null);
       user && cb(user);
     });
   }
