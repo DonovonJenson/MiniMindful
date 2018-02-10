@@ -63,3 +63,16 @@ audio {
 
 /* =========== SESSION END ========== */
 
+.hidden {
+  visibility: hidden;
+}
+
+.flash {
+  color: red;
+  visibility: visible;
+}
+
+
+/* =========== LOGIN COMPONENT ========== */
+
+

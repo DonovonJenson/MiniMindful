@@ -107,14 +107,8 @@ class App extends React.Component {
     this.setState({view: view});
   }
 
-  sendLogin(loginObject) {
-    axios.post('/login', loginObject)
-      .then((response) =>{
-        if (response.status === 200) {
-          this.setState({user_id: response.data.user_id, view: 'New Session'});
-        }
-      }).catch( (error) => {
-      });
+  sendLogin(data) {
+    this.setState({user_id: data, view: 'New Session'});
   }
 
   sendSignup(signUpObject) {
